@@ -8,7 +8,7 @@ public class Tests {
     @Test
     public void getValue(){
 
-        assertEquals(Rank.Duece.getValue(), 2);
+        assertEquals(Rank.Deuce.getValue(), 2);
         assertEquals(Rank.Three.getValue(), 3);
         assertEquals(Rank.Four.getValue(), 4);
         assertEquals(Rank.Five.getValue(), 5);
@@ -24,14 +24,35 @@ public class Tests {
     }
     @Test
     public void PokerHandTest(){
-
+        Card C2 = new Card(Suit.Clubs, Rank.Deuce);
+        Card HA = new Card(Suit.Hearts, Rank.Ace);
+        Card S7 = new Card(Suit.Spades, Rank.Seven);
+        Card D2 = new Card(Suit.Diamonds, Rank.Deuce);
+        Card C3 = new Card(Suit.Clubs, Rank.Three);
+        PokerHand hand01 = new PokerHand(C2, HA, S7, D2, C3);
     }
     @Test(expected = DuplicateCardException.class)
     public void tryToAddTheSameCardTwice() {
-        Card C2 = new Card(Suit.Clubs,Rank.Duece);
-        Card C3 = new Card(Suit.Clubs,Rank.Duece);
-        Card C4 = new Card(Suit.Clubs,Rank.Duece);
-        Card C5 = new Card(Suit.Clubs,Rank.Duece);
+        Card C2 = new Card(Suit.Clubs,Rank.Deuce);
+        Card C3 = new Card(Suit.Clubs,Rank.Deuce);
+        Card C4 = new Card(Suit.Clubs,Rank.Deuce);
+        Card C5 = new Card(Suit.Clubs,Rank.Deuce);
         new PokerHand(C2, C3, C4, C4, C5);  // Assume C2 = new Card(Rank.Deuce, Suit.Clubs), C3 = ...
+    }
+    @Test
+    public void showRankValues(){
+        String result = "";
+        for (Rank r : Rank.values()){
+            result = result + r + " ";
+        }
+        assertEquals("Deuce Three Four Five Six Seven Eight Nine Ten Jack Queen King Ace ", result);
+    }
+    @Test
+    public void showSuitValues(){
+        String result = "";
+        for (Suit s : Suit.values()){
+            result = result + s + " ";
+        }
+        assertEquals("Clubs Diamonds Hearts Spades ", result);
     }
 }//end Tests
