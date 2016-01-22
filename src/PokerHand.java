@@ -8,6 +8,7 @@ import java.util.Stack;
  */
 public class PokerHand {
     private List<Card> hand;
+    private List<Card> Kicker;
 
     public PokerHand(Card a, Card b, Card c, Card d, Card e){
         hand = new ArrayList<>();
@@ -26,4 +27,5 @@ public class PokerHand {
         Collections.sort(hand);
 
     }
+
 }
