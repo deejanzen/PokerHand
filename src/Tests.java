@@ -96,8 +96,8 @@ public class Tests {
         PokerHand pairDeucesA73 = new PokerHand(DA,C2,D2,C3,S7);
 
         PokerHand pairAce = new PokerHand(CK,CQ,DA,CJ,SJ);
-        assertEquals(1, pairDeucesA73.getHandRank().getValue());
-        assertEquals(1, pairAce.getHandRank().getValue());
+        assertEquals(HandRank.OnePair, pairDeucesA73.getHandRank());
+        assertEquals(HandRank.OnePair, pairAce.getHandRank());
         assertEquals(1, pairAce.compareTo(pairDeucesA73));
         assertEquals(-1, pairDeucesA73.compareTo(pairAce));
 
@@ -108,6 +108,20 @@ public class Tests {
         PokerHand pairDeuces01 = new PokerHand(S2,H2,C6,C8,C9);
         PokerHand pairDeuces02 = new PokerHand(S2,H2,C7,C8,C9);
         assertEquals(-1, pairDeuces01.compareTo(pairDeuces02));
+
+        PokerHand threeDeuces01 = new PokerHand(S2,H2,D2,C8,C9);
+        assertEquals(HandRank.HighCard ,threeDeuces01.getHandRank());
+
+        PokerHand pair05 = new PokerHand(C2,C3,C4,C5,D5);
+        assertEquals(HandRank.OnePair, pair05.getHandRank());
+        PokerHand pair06 = new PokerHand(C2,C3,D3,C4,C5);
+        assertEquals(HandRank.OnePair, pair06.getHandRank());
+        PokerHand pair07 = new PokerHand(C2,C3,C4,D4,C5);
+        assertEquals(HandRank.OnePair, pair07.getHandRank());
+
+        PokerHand pair08 = new PokerHand(D3,D4,D10,CJ,DJ);
+        PokerHand pair09 = new PokerHand(D2,D4,D10,CJ,DJ);
+        assertEquals(1, pair08.compareTo(pair09));
 
     }
 }//end Tests

@@ -59,22 +59,67 @@ public class PokerHand {
 
     private static HandRank setHandRankAndKicker(List<Card> hand, List<Card> kicker){
         //if you have a pair then check the pair based hands
-        if ( hand.get(0).getRank().getValue() == hand.get(1).getRank().getValue() ||
-        hand.get(1).getRank().getValue() == hand.get(2).getRank().getValue() ||
-        hand.get(2).getRank().getValue() == hand.get(3).getRank().getValue() ||
-        hand.get(3).getRank().getValue() == hand.get(4).getRank().getValue()     ){
+        //collections.reverse?...huh kicker order is fubar
+        if (hand.get(0).getRank().getValue() == hand.get(1).getRank().getValue() ||
+            hand.get(1).getRank().getValue() == hand.get(2).getRank().getValue() ||
+            hand.get(2).getRank().getValue() == hand.get(3).getRank().getValue() ||
+            hand.get(3).getRank().getValue() == hand.get(4).getRank().getValue()     ){
 
             //pp*** where */=*
             if (hand.get(0).getRank().getValue() == hand.get(1).getRank().getValue() &&
-            hand.get(2).getRank().getValue() != hand.get(3).getRank().getValue() &&
-            hand.get(3).getRank().getValue() != hand.get(4).getRank().getValue()     ){
+                hand.get(1).getRank().getValue() != hand.get(2).getRank().getValue() &&
+                hand.get(2).getRank().getValue() != hand.get(3).getRank().getValue() &&
+                hand.get(3).getRank().getValue() != hand.get(4).getRank().getValue()   ) {
 
-                kicker.add(0, hand.get(0)); //pair rank
-                kicker.add(1, hand.get(4)); //1st k
-                kicker.add(2, hand.get(3));
-                kicker.add(3, hand.get(2));
-                return HandRank.OnePair;
+                    kicker.add(0, hand.get(0)); //pair rank
+                    kicker.add(1, hand.get(4)); //1st k
+                    kicker.add(2, hand.get(3));
+                    kicker.add(3, hand.get(2));
+                    return HandRank.OnePair;
+                }
+
+            //*pp**
+            if (hand.get(0).getRank().getValue() != hand.get(1).getRank().getValue() &&
+                hand.get(1).getRank().getValue() == hand.get(2).getRank().getValue() &&
+                hand.get(2).getRank().getValue() != hand.get(3).getRank().getValue() &&
+                hand.get(3).getRank().getValue() != hand.get(4).getRank().getValue()    ) {
+
+                    kicker.add(0, hand.get(1)); //pair rank
+                    kicker.add(1, hand.get(4)); //1st k
+                    kicker.add(2, hand.get(3));
+                    kicker.add(3, hand.get(0));
+                    return HandRank.OnePair;
+                }
+
+            //**pp* where */=*
+            if (hand.get(0).getRank().getValue() != hand.get(1).getRank().getValue() &&
+                hand.get(1).getRank().getValue() != hand.get(2).getRank().getValue() &&
+                hand.get(2).getRank().getValue() == hand.get(3).getRank().getValue() &&
+                hand.get(3).getRank().getValue() != hand.get(4).getRank().getValue()    ) {
+
+                    kicker.add(0, hand.get(2)); //pair rank
+                    kicker.add(1, hand.get(4)); //1st k
+                    kicker.add(2, hand.get(1));
+                    kicker.add(3, hand.get(0));
+                    return HandRank.OnePair;
             }
+
+            //***pp where */=*
+            if (hand.get(0).getRank().getValue() != hand.get(1).getRank().getValue() &&
+                hand.get(1).getRank().getValue() != hand.get(2).getRank().getValue() &&
+                hand.get(2).getRank().getValue() != hand.get(3).getRank().getValue() &&
+                hand.get(3).getRank().getValue() == hand.get(4).getRank().getValue()) {
+
+                    kicker.add(0, hand.get(3)); //pair rank
+                    kicker.add(1, hand.get(2)); //1st k
+                    kicker.add(2, hand.get(1));
+                    kicker.add(3, hand.get(0));
+                    return HandRank.OnePair;
+            }
+
+
+
+
         }
 
         //otherwise...flush, straight etc
