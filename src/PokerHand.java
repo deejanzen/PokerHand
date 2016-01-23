@@ -34,10 +34,11 @@ public class PokerHand {
 
     public HandRank getHandRank(){
         return handRank;
-    }
+    }//end getHandRank
+
     public List<Card> getKicker(){
         return kicker;
-    }
+    }//end getKicker
 
     public int compareTo(PokerHand other){
         if ( handRank.getValue() < other.getHandRank().getValue() ) return -1;
@@ -55,15 +56,11 @@ public class PokerHand {
         }
         return 0;
 
-    }//compareTo
+    }//end compareTo
 
     private static HandRank setHandRankAndKicker(List<Card> hand, List<Card> kicker){
         //if you have a pair then check the pair based hands
-        //collections.reverse?...huh kicker order is fubar
-        if (hand.get(0).getRank().getValue() == hand.get(1).getRank().getValue() ||
-            hand.get(1).getRank().getValue() == hand.get(2).getRank().getValue() ||
-            hand.get(2).getRank().getValue() == hand.get(3).getRank().getValue() ||
-            hand.get(3).getRank().getValue() == hand.get(4).getRank().getValue()     ){
+        if (  hasPair(hand)  ){
 
             //pp*** where */=*
             if (hand.get(0).getRank().getValue() == hand.get(1).getRank().getValue() &&
@@ -117,8 +114,28 @@ public class PokerHand {
                     return HandRank.OnePair;
             }
 
+            //TwoPair
+            //PPbb*
+            if (hand.get(0).getRank().getValue() == hand.get(1).getRank().getValue() &&
+                hand.get(1).getRank().getValue() != hand.get(2).getRank().getValue() &&
+                hand.get(2).getRank().getValue() == hand.get(3).getRank().getValue() &&
+                hand.get(3).getRank().getValue() != hand.get(4).getRank().getValue()) {
 
+                    if( hand.get(0).getRank().getValue() > hand.get(2).getRank().getValue()){
+                        kicker.add(0, hand.get(0));
+                        kicker.add(1, hand.get(2));
+                        kicker.add(2, hand.get(4));
+                        return HandRank.TwoPair;
 
+                    }
+                    else{
+                        kicker.add(0, hand.get(2));
+                        kicker.add(1, hand.get(0));
+                        kicker.add(2, hand.get(4));
+                        return HandRank.TwoPair;
+
+                    }
+            }
 
         }
 
@@ -128,7 +145,17 @@ public class PokerHand {
         }
         return HandRank.HighCard;
 
-    }
+    }//end setHandRankAndKicker
+
+    private static boolean hasPair(List<Card> hand){
+        if (hand.get(0).getRank().getValue() == hand.get(1).getRank().getValue() ||
+            hand.get(1).getRank().getValue() == hand.get(2).getRank().getValue() ||
+            hand.get(2).getRank().getValue() == hand.get(3).getRank().getValue() ||
+            hand.get(3).getRank().getValue() == hand.get(4).getRank().getValue()     ){
+                return true;
+        }
+        return false;
+    }//end hasPair
 
 
 
