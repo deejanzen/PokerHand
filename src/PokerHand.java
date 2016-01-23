@@ -14,6 +14,7 @@ public class PokerHand {
     public PokerHand(Card a, Card b, Card c, Card d, Card e){
         hand = new ArrayList<>();
         kicker = new ArrayList<>();
+
         Stack<Card> temp = new Stack<>();
         temp.push(a);
         temp.push(b);
@@ -78,7 +79,7 @@ public class PokerHand {
 
         //otherwise...flush, straight etc
         else {
-            return HandRank.HighCard;
+            return HandRank.Flush;
         }
         return HandRank.HighCard;
 
