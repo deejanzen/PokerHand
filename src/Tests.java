@@ -217,5 +217,42 @@ public class Tests {
 
         PokerHand fh0 = new PokerHand(S2,H2,D8,H8,C8);
         assertEquals(HandRank.HighCard ,fh0.getHandRank());
+
+        PokerHand p23 = new PokerHand(S2, D2, SA, D3, S3);
+        assertEquals(HandRank.TwoPair, p23.getHandRank() );
+        assertEquals(0, p23.compareTo(p23) );
+
+        PokerHand p24 = new PokerHand(S2, D2, SQ, S3, D3 );
+        assertEquals(-1, p24.compareTo(p23) );
+
+        PokerHand p25 = new PokerHand(S7, D7, SA, D3, S3);
+        assertEquals(1, p25.compareTo(p23) );
+
+        PokerHand p26 = new PokerHand(S2, D2, H2, C2, D3 );
+        assertEquals(HandRank.HighCard ,p26.getHandRank());
+
+        PokerHand p27 = new PokerHand(S2, D2, D3, C2, H2 );
+        assertEquals(HandRank.HighCard ,p26.getHandRank());
+
+        PokerHand p28 = new PokerHand(S7, D7, SA, D4, S4);
+        assertEquals(-1, p25.compareTo(p28) );
+
+        PokerHand p29 = new PokerHand(S4, D4, SA, D7, S7);
+        assertEquals(-1, p25.compareTo(p29) );
+
+        PokerHand p210 = new PokerHand(SA, D4, S4, D7, S7);
+        assertEquals(HandRank.TwoPair, p210.getHandRank() );
+
+        PokerHand p211 = new PokerHand(SQ, D5, S5, D7, S7);
+        assertEquals(1, p211.compareTo(p210) );
+
+        assertEquals(0, p211.compareTo(p211) );
+        assertEquals(0, p28.compareTo(p29) );
+
+        PokerHand p212 = new PokerHand(SQ, D5, S5, D4, S4);
+
+        assertEquals(1, p211.compareTo(p212) );
+
+
     }
 }//end Tests

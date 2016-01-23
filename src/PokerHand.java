@@ -137,6 +137,51 @@ public class PokerHand {
                     }
             }
 
+            //PP*bb
+            if (hand.get(0).getRank().getValue() == hand.get(1).getRank().getValue() &&
+                hand.get(1).getRank().getValue() != hand.get(2).getRank().getValue() &&
+                hand.get(2).getRank().getValue() != hand.get(3).getRank().getValue() &&
+                hand.get(3).getRank().getValue() == hand.get(4).getRank().getValue()) {
+
+                    if( hand.get(0).getRank().getValue() > hand.get(3).getRank().getValue()){
+                        kicker.add(0, hand.get(0));
+                        kicker.add(1, hand.get(3));
+                        kicker.add(2, hand.get(2));
+                        return HandRank.TwoPair;
+
+                    }
+                    else{
+                        kicker.add(0, hand.get(3));
+                        kicker.add(1, hand.get(0));
+                        kicker.add(2, hand.get(2));
+                        return HandRank.TwoPair;
+
+                }
+            }
+
+            //*PPbb
+            if (hand.get(0).getRank().getValue() != hand.get(1).getRank().getValue() &&
+                hand.get(1).getRank().getValue() == hand.get(2).getRank().getValue() &&
+                hand.get(2).getRank().getValue() != hand.get(3).getRank().getValue() &&
+                hand.get(3).getRank().getValue() == hand.get(4).getRank().getValue()) {
+
+                    if( hand.get(1).getRank().getValue() > hand.get(3).getRank().getValue()){
+                        kicker.add(0, hand.get(1));
+                        kicker.add(1, hand.get(3));
+                        kicker.add(2, hand.get(0));
+                        return HandRank.TwoPair;
+
+                    }
+                    else{
+                        kicker.add(0, hand.get(3));
+                        kicker.add(1, hand.get(1));
+                        kicker.add(2, hand.get(0));
+                        return HandRank.TwoPair;
+
+                }
+            }
+
+
         }
 
         //otherwise...flush, straight etc
