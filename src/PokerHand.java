@@ -27,31 +27,7 @@ public class PokerHand {
         }
 
         Collections.sort(hand);
-
-        //if you have a pair then check the pair based hands
-        if ( hand.get(0).getRank().getValue() == hand.get(1).getRank().getValue() ||
-             hand.get(1).getRank().getValue() == hand.get(2).getRank().getValue() ||
-             hand.get(2).getRank().getValue() == hand.get(3).getRank().getValue() ||
-             hand.get(3).getRank().getValue() == hand.get(4).getRank().getValue()     ){
-
-            //pp*** where */=*
-            if (hand.get(0).getRank().getValue() == hand.get(1).getRank().getValue() &&
-                hand.get(2).getRank().getValue() != hand.get(3).getRank().getValue() &&
-                hand.get(3).getRank().getValue() != hand.get(4).getRank().getValue()    ){
-
-                    handRank = HandRank.OnePair;
-                    kicker.add(2, hand.get(2));
-                    kicker.add(3, hand.get(3));
-                    kicker.add(4, hand.get(4));
-            }
-        }
-
-        //otherwise...
-        else {
-            return;
-        }
-
-
+        handRank = setHandRankAndKicker(hand, kicker);
 
     }//end constructor
 
@@ -61,6 +37,53 @@ public class PokerHand {
     public List<Card> getKicker(){
         return kicker;
     }
+
+    public int compareTo(PokerHand other){
+        if ( handRank.getValue() < other.getHandRank().getValue() ) return -1;
+        else if ( handRank.getValue() > other.getHandRank().getValue() ) return 1;
+        else {
+            int count = 0;
+            for (Card c: kicker) {
+                if (c.getRank().getValue() < other.getKicker().get(count).getRank().getValue())
+                    return -1;
+                else if (c.getRank().getValue() > other.getKicker().get(count).getRank().getValue())
+                    return 1;
+                count += 1;
+            }
+
+        }
+        return 0;
+
+    }//compareTo
+
+    private static HandRank setHandRankAndKicker(List<Card> hand, List<Card> kicker){
+        //if you have a pair then check the pair based hands
+        if ( hand.get(0).getRank().getValue() == hand.get(1).getRank().getValue() ||
+        hand.get(1).getRank().getValue() == hand.get(2).getRank().getValue() ||
+        hand.get(2).getRank().getValue() == hand.get(3).getRank().getValue() ||
+        hand.get(3).getRank().getValue() == hand.get(4).getRank().getValue()     ){
+
+            //pp*** where */=*
+            if (hand.get(0).getRank().getValue() == hand.get(1).getRank().getValue() &&
+            hand.get(2).getRank().getValue() != hand.get(3).getRank().getValue() &&
+            hand.get(3).getRank().getValue() != hand.get(4).getRank().getValue()     ){
+
+                kicker.add(0, hand.get(0)); //pair rank
+                kicker.add(1, hand.get(4)); //1st k
+                kicker.add(2, hand.get(3));
+                kicker.add(3, hand.get(2));
+                return HandRank.OnePair;
+            }
+        }
+
+        //otherwise...flush, straight etc
+        else {
+            return HandRank.HighCard;
+        }
+        return HandRank.HighCard;
+
+    }
+
 
 
 
