@@ -262,13 +262,27 @@ public class PokerHand {
         //otherwise...straight, straightFlush royalStraightFlush etc
         else if ( hasStraight(hand) ){
             if ( hasFlush(hand) ){
+                //check ace draw or royal flush
+                if (hand.get(4).getRank().getValue() == 14) {
+                    if(hand.get(3).getRank().getValue() == 5){
+                        kicker.add(0, hand.get(3));
+                        return HandRank.StraightFlush;
+                    }
+                    else {
+                        //kicker.add(0, hand.get(4));
+                        return HandRank.RoyalFLush;
+                    }
 
+                }
+
+                kicker.add(0, hand.get(4));
+                return HandRank.StraightFlush;
             }
 
-            if (hand.get(4).getRank().getValue() == 14)
+            if (hand.get(3).getRank().getValue() == 5 && hand.get(4).getRank().getValue() == 14)
                 kicker.add(0, hand.get(3));
-            else
-                kicker.add(0, hand.get(4));
+
+            kicker.add(0, hand.get(4));
             return HandRank.Straight;
         }
         //otherwise only flush
@@ -295,10 +309,10 @@ public class PokerHand {
     }//end hasPair
 
     private static boolean hasStraight(List<Card> hand){
-        if ( hand.get(3).getRank().getValue() == 5 && hand.get(4).getRank().getValue() == 14 )
+        if ( hand.get(3).getRank().getValue() == 5 && hand.get(4).getRank().getValue() == 14 ||
+            hand.get(0).getRank().getValue() + 4 == hand.get(4).getRank().getValue() )
             return true;
-        if ( hand.get(0).getRank().getValue() + 4 == hand.get(4).getRank().getValue() )
-            return true;
+
         return false;
     }
 

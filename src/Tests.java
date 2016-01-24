@@ -565,7 +565,7 @@ public class Tests {
         assertEquals(0,st00.compareTo(st00));
         assertEquals(0,st02.compareTo(st02));
         assertEquals(1,st01.compareTo(st02));
-        st03 = new PokerHand(HA, D2, S3, C4, S5);
+        PokerHand st03 = new PokerHand(HA, D2, S3, C4, S5);
 
 
 
