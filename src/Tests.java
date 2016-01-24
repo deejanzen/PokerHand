@@ -5,6 +5,62 @@ import org.junit.*;
 import static org.junit.Assert.*;
 
 public class Tests {
+    public Card C2 = new Card(Suit.Clubs, Rank.Deuce);
+    public Card C3 = new Card(Suit.Clubs, Rank.Three);
+    public Card C4 = new Card(Suit.Clubs, Rank.Four);
+    public Card C5 = new Card(Suit.Clubs, Rank.Five);
+    public Card C6 = new Card(Suit.Clubs, Rank.Six);
+    public Card C7 = new Card(Suit.Clubs, Rank.Seven);
+    public Card C8 = new Card(Suit.Clubs, Rank.Eight);
+    public Card C9 = new Card(Suit.Clubs, Rank.Nine);
+    public Card C10 = new Card(Suit.Clubs, Rank.Ten);
+    public Card CJ = new Card(Suit.Clubs, Rank.Jack);
+    public Card CQ = new Card(Suit.Clubs, Rank.Queen);
+    public Card CK = new Card(Suit.Clubs, Rank.King);
+    public Card CA = new Card(Suit.Clubs, Rank.Ace);
+
+    public Card D2 = new Card(Suit.Diamonds, Rank.Deuce);
+    public Card D3 = new Card(Suit.Diamonds, Rank.Three);
+    public Card D4 = new Card(Suit.Diamonds, Rank.Four);
+    public Card D5 = new Card(Suit.Diamonds, Rank.Five);
+    public Card D6 = new Card(Suit.Diamonds, Rank.Six);
+    public Card D7 = new Card(Suit.Diamonds, Rank.Seven);
+    public Card D8 = new Card(Suit.Diamonds, Rank.Eight);
+    public Card D9 = new Card(Suit.Diamonds, Rank.Nine);
+    public Card D10 = new Card(Suit.Diamonds, Rank.Ten);
+    public Card DJ = new Card(Suit.Diamonds, Rank.Jack);
+    public Card DQ = new Card(Suit.Diamonds, Rank.Queen);
+    public Card DK = new Card(Suit.Diamonds, Rank.King);
+    public Card DA = new Card(Suit.Diamonds, Rank.Ace);
+
+    public Card H2 = new Card(Suit.Hearts, Rank.Deuce);
+    public Card H3 = new Card(Suit.Hearts, Rank.Three);
+    public Card H4 = new Card(Suit.Hearts, Rank.Four);
+    public Card H5 = new Card(Suit.Hearts, Rank.Five);
+    public Card H6 = new Card(Suit.Hearts, Rank.Six);
+    public Card H7 = new Card(Suit.Hearts, Rank.Seven);
+    public Card H8 = new Card(Suit.Hearts, Rank.Eight);
+    public Card H9 = new Card(Suit.Hearts, Rank.Nine);
+    public Card H10 = new Card(Suit.Hearts, Rank.Ten);
+    public Card HJ = new Card(Suit.Hearts, Rank.Jack);
+    public Card HQ = new Card(Suit.Hearts, Rank.Queen);
+    public Card HK = new Card(Suit.Hearts, Rank.King);
+    public Card HA = new Card(Suit.Hearts, Rank.Ace);
+
+    public Card S2 = new Card(Suit.Spades, Rank.Deuce);
+    public Card S3 = new Card(Suit.Spades, Rank.Three);
+    public Card S4 = new Card(Suit.Spades, Rank.Four);
+    public Card S5 = new Card(Suit.Spades, Rank.Five);
+    public Card S6 = new Card(Suit.Spades, Rank.Six);
+    public Card S7 = new Card(Suit.Spades, Rank.Seven);
+    public Card S8 = new Card(Suit.Spades, Rank.Eight);
+    public Card S9 = new Card(Suit.Spades, Rank.Nine);
+    public Card S10 = new Card(Suit.Spades, Rank.Ten);
+    public Card SJ = new Card(Suit.Spades, Rank.Jack);
+    public Card SQ = new Card(Suit.Spades, Rank.Queen);
+    public Card SK = new Card(Suit.Spades, Rank.King);
+    public Card SA = new Card(Suit.Spades, Rank.Ace);
+
     @Test
     public void getValue(){
 
@@ -24,19 +80,12 @@ public class Tests {
     }
     @Test
     public void PokerHandTest(){
-        Card C2 = new Card(Suit.Clubs, Rank.Deuce);
-        Card HA = new Card(Suit.Hearts, Rank.Ace);
-        Card S7 = new Card(Suit.Spades, Rank.Seven);
-        Card D2 = new Card(Suit.Diamonds, Rank.Deuce);
-        Card C3 = new Card(Suit.Clubs, Rank.Three);
+
         PokerHand hand01 = new PokerHand(C2, HA, S7, D2, C3);
     }
     @Test(expected = DuplicateCardException.class)
     public void tryToAddTheSameCardTwice() {
-        Card C2 = new Card(Suit.Clubs,Rank.Deuce);
-        Card C3 = new Card(Suit.Clubs,Rank.Deuce);
-        Card C4 = new Card(Suit.Clubs,Rank.Deuce);
-        Card C5 = new Card(Suit.Clubs,Rank.Deuce);
+
         new PokerHand(C2, C3, C4, C4, C5);  // Assume C2 = new Card(Rank.Deuce, Suit.Clubs), C3 = ...
     }
     @Test
@@ -57,61 +106,7 @@ public class Tests {
     }
     @Test
     public void OnePairTests(){
-        Card C2 = new Card(Suit.Clubs, Rank.Deuce);
-        Card C3 = new Card(Suit.Clubs, Rank.Three);
-        Card C4 = new Card(Suit.Clubs, Rank.Four);
-        Card C5 = new Card(Suit.Clubs, Rank.Five);
-        Card C6 = new Card(Suit.Clubs, Rank.Six);
-        Card C7 = new Card(Suit.Clubs, Rank.Seven);
-        Card C8 = new Card(Suit.Clubs, Rank.Eight);
-        Card C9 = new Card(Suit.Clubs, Rank.Nine);
-        Card C10 = new Card(Suit.Clubs, Rank.Ten);
-        Card CJ = new Card(Suit.Clubs, Rank.Jack);
-        Card CQ = new Card(Suit.Clubs, Rank.Queen);
-        Card CK = new Card(Suit.Clubs, Rank.King);
-        Card CA = new Card(Suit.Clubs, Rank.Ace);
 
-        Card D2 = new Card(Suit.Diamonds, Rank.Deuce);
-        Card D3 = new Card(Suit.Diamonds, Rank.Three);
-        Card D4 = new Card(Suit.Diamonds, Rank.Four);
-        Card D5 = new Card(Suit.Diamonds, Rank.Five);
-        Card D6 = new Card(Suit.Diamonds, Rank.Six);
-        Card D7 = new Card(Suit.Diamonds, Rank.Seven);
-        Card D8 = new Card(Suit.Diamonds, Rank.Eight);
-        Card D9 = new Card(Suit.Diamonds, Rank.Nine);
-        Card D10 = new Card(Suit.Diamonds, Rank.Ten);
-        Card DJ = new Card(Suit.Diamonds, Rank.Jack);
-        Card DQ = new Card(Suit.Diamonds, Rank.Queen);
-        Card DK = new Card(Suit.Diamonds, Rank.King);
-        Card DA = new Card(Suit.Diamonds, Rank.Ace);
-
-        Card H2 = new Card(Suit.Hearts, Rank.Deuce);
-        Card H3 = new Card(Suit.Hearts, Rank.Three);
-        Card H4 = new Card(Suit.Hearts, Rank.Four);
-        Card H5 = new Card(Suit.Hearts, Rank.Five);
-        Card H6 = new Card(Suit.Hearts, Rank.Six);
-        Card H7 = new Card(Suit.Hearts, Rank.Seven);
-        Card H8 = new Card(Suit.Hearts, Rank.Eight);
-        Card H9 = new Card(Suit.Hearts, Rank.Nine);
-        Card H10 = new Card(Suit.Hearts, Rank.Ten);
-        Card HJ = new Card(Suit.Hearts, Rank.Jack);
-        Card HQ = new Card(Suit.Hearts, Rank.Queen);
-        Card HK = new Card(Suit.Hearts, Rank.King);
-        Card HA = new Card(Suit.Hearts, Rank.Ace);
-
-        Card S2 = new Card(Suit.Spades, Rank.Deuce);
-        Card S3 = new Card(Suit.Spades, Rank.Three);
-        Card S4 = new Card(Suit.Spades, Rank.Four);
-        Card S5 = new Card(Suit.Spades, Rank.Five);
-        Card S6 = new Card(Suit.Spades, Rank.Six);
-        Card S7 = new Card(Suit.Spades, Rank.Seven);
-        Card S8 = new Card(Suit.Spades, Rank.Eight);
-        Card S9 = new Card(Suit.Spades, Rank.Nine);
-        Card S10 = new Card(Suit.Spades, Rank.Ten);
-        Card SJ = new Card(Suit.Spades, Rank.Jack);
-        Card SQ = new Card(Suit.Spades, Rank.Queen);
-        Card SK = new Card(Suit.Spades, Rank.King);
-        Card SA = new Card(Suit.Spades, Rank.Ace);
 
 
 
@@ -132,7 +127,7 @@ public class Tests {
         assertEquals(-1, pairDeuces01.compareTo(pairDeuces02));
 
         PokerHand threeDeuces01 = new PokerHand(S2,H2,D2,C8,C9);
-        assertEquals(HandRank.HighCard ,threeDeuces01.getHandRank());
+        assertEquals(HandRank.ThreeOfAKind ,threeDeuces01.getHandRank());
 
         PokerHand pair05 = new PokerHand(C2,C3,C4,C5,D5);
         assertEquals(HandRank.OnePair, pair05.getHandRank());
@@ -148,61 +143,7 @@ public class Tests {
     }
     @Test
     public void TwoPairTests(){
-        Card C2 = new Card(Suit.Clubs, Rank.Deuce);
-        Card C3 = new Card(Suit.Clubs, Rank.Three);
-        Card C4 = new Card(Suit.Clubs, Rank.Four);
-        Card C5 = new Card(Suit.Clubs, Rank.Five);
-        Card C6 = new Card(Suit.Clubs, Rank.Six);
-        Card C7 = new Card(Suit.Clubs, Rank.Seven);
-        Card C8 = new Card(Suit.Clubs, Rank.Eight);
-        Card C9 = new Card(Suit.Clubs, Rank.Nine);
-        Card C10 = new Card(Suit.Clubs, Rank.Ten);
-        Card CJ = new Card(Suit.Clubs, Rank.Jack);
-        Card CQ = new Card(Suit.Clubs, Rank.Queen);
-        Card CK = new Card(Suit.Clubs, Rank.King);
-        Card CA = new Card(Suit.Clubs, Rank.Ace);
 
-        Card D2 = new Card(Suit.Diamonds, Rank.Deuce);
-        Card D3 = new Card(Suit.Diamonds, Rank.Three);
-        Card D4 = new Card(Suit.Diamonds, Rank.Four);
-        Card D5 = new Card(Suit.Diamonds, Rank.Five);
-        Card D6 = new Card(Suit.Diamonds, Rank.Six);
-        Card D7 = new Card(Suit.Diamonds, Rank.Seven);
-        Card D8 = new Card(Suit.Diamonds, Rank.Eight);
-        Card D9 = new Card(Suit.Diamonds, Rank.Nine);
-        Card D10 = new Card(Suit.Diamonds, Rank.Ten);
-        Card DJ = new Card(Suit.Diamonds, Rank.Jack);
-        Card DQ = new Card(Suit.Diamonds, Rank.Queen);
-        Card DK = new Card(Suit.Diamonds, Rank.King);
-        Card DA = new Card(Suit.Diamonds, Rank.Ace);
-
-        Card H2 = new Card(Suit.Hearts, Rank.Deuce);
-        Card H3 = new Card(Suit.Hearts, Rank.Three);
-        Card H4 = new Card(Suit.Hearts, Rank.Four);
-        Card H5 = new Card(Suit.Hearts, Rank.Five);
-        Card H6 = new Card(Suit.Hearts, Rank.Six);
-        Card H7 = new Card(Suit.Hearts, Rank.Seven);
-        Card H8 = new Card(Suit.Hearts, Rank.Eight);
-        Card H9 = new Card(Suit.Hearts, Rank.Nine);
-        Card H10 = new Card(Suit.Hearts, Rank.Ten);
-        Card HJ = new Card(Suit.Hearts, Rank.Jack);
-        Card HQ = new Card(Suit.Hearts, Rank.Queen);
-        Card HK = new Card(Suit.Hearts, Rank.King);
-        Card HA = new Card(Suit.Hearts, Rank.Ace);
-
-        Card S2 = new Card(Suit.Spades, Rank.Deuce);
-        Card S3 = new Card(Suit.Spades, Rank.Three);
-        Card S4 = new Card(Suit.Spades, Rank.Four);
-        Card S5 = new Card(Suit.Spades, Rank.Five);
-        Card S6 = new Card(Suit.Spades, Rank.Six);
-        Card S7 = new Card(Suit.Spades, Rank.Seven);
-        Card S8 = new Card(Suit.Spades, Rank.Eight);
-        Card S9 = new Card(Suit.Spades, Rank.Nine);
-        Card S10 = new Card(Suit.Spades, Rank.Ten);
-        Card SJ = new Card(Suit.Spades, Rank.Jack);
-        Card SQ = new Card(Suit.Spades, Rank.Queen);
-        Card SK = new Card(Suit.Spades, Rank.King);
-        Card SA = new Card(Suit.Spades, Rank.Ace);
 
         PokerHand p20 = new PokerHand(S2, D2, S3, D3, SA);
         assertEquals(HandRank.TwoPair, p20.getHandRank() );
@@ -216,7 +157,7 @@ public class Tests {
         assertEquals(-1,p21.compareTo(p22) );
 
         PokerHand fh0 = new PokerHand(S2,H2,D8,H8,C8);
-        assertEquals(HandRank.HighCard ,fh0.getHandRank());
+        assertEquals(HandRank.FullHouse ,fh0.getHandRank());
 
         PokerHand p23 = new PokerHand(S2, D2, SA, D3, S3);
         assertEquals(HandRank.TwoPair, p23.getHandRank() );
@@ -229,10 +170,10 @@ public class Tests {
         assertEquals(1, p25.compareTo(p23) );
 
         PokerHand p26 = new PokerHand(S2, D2, H2, C2, D3 );
-        assertEquals(HandRank.HighCard ,p26.getHandRank());
+        assertEquals(HandRank.FourOfAKind ,p26.getHandRank());
 
         PokerHand p27 = new PokerHand(S2, D2, D3, C2, H2 );
-        assertEquals(HandRank.HighCard ,p26.getHandRank());
+        assertEquals(HandRank.FourOfAKind ,p26.getHandRank());
 
         PokerHand p28 = new PokerHand(S7, D7, SA, D4, S4);
         assertEquals(-1, p25.compareTo(p28) );
@@ -257,64 +198,10 @@ public class Tests {
     }
     @Test
     public void threeKindTests(){
-        Card C2 = new Card(Suit.Clubs, Rank.Deuce);
-        Card C3 = new Card(Suit.Clubs, Rank.Three);
-        Card C4 = new Card(Suit.Clubs, Rank.Four);
-        Card C5 = new Card(Suit.Clubs, Rank.Five);
-        Card C6 = new Card(Suit.Clubs, Rank.Six);
-        Card C7 = new Card(Suit.Clubs, Rank.Seven);
-        Card C8 = new Card(Suit.Clubs, Rank.Eight);
-        Card C9 = new Card(Suit.Clubs, Rank.Nine);
-        Card C10 = new Card(Suit.Clubs, Rank.Ten);
-        Card CJ = new Card(Suit.Clubs, Rank.Jack);
-        Card CQ = new Card(Suit.Clubs, Rank.Queen);
-        Card CK = new Card(Suit.Clubs, Rank.King);
-        Card CA = new Card(Suit.Clubs, Rank.Ace);
 
-        Card D2 = new Card(Suit.Diamonds, Rank.Deuce);
-        Card D3 = new Card(Suit.Diamonds, Rank.Three);
-        Card D4 = new Card(Suit.Diamonds, Rank.Four);
-        Card D5 = new Card(Suit.Diamonds, Rank.Five);
-        Card D6 = new Card(Suit.Diamonds, Rank.Six);
-        Card D7 = new Card(Suit.Diamonds, Rank.Seven);
-        Card D8 = new Card(Suit.Diamonds, Rank.Eight);
-        Card D9 = new Card(Suit.Diamonds, Rank.Nine);
-        Card D10 = new Card(Suit.Diamonds, Rank.Ten);
-        Card DJ = new Card(Suit.Diamonds, Rank.Jack);
-        Card DQ = new Card(Suit.Diamonds, Rank.Queen);
-        Card DK = new Card(Suit.Diamonds, Rank.King);
-        Card DA = new Card(Suit.Diamonds, Rank.Ace);
-
-        Card H2 = new Card(Suit.Hearts, Rank.Deuce);
-        Card H3 = new Card(Suit.Hearts, Rank.Three);
-        Card H4 = new Card(Suit.Hearts, Rank.Four);
-        Card H5 = new Card(Suit.Hearts, Rank.Five);
-        Card H6 = new Card(Suit.Hearts, Rank.Six);
-        Card H7 = new Card(Suit.Hearts, Rank.Seven);
-        Card H8 = new Card(Suit.Hearts, Rank.Eight);
-        Card H9 = new Card(Suit.Hearts, Rank.Nine);
-        Card H10 = new Card(Suit.Hearts, Rank.Ten);
-        Card HJ = new Card(Suit.Hearts, Rank.Jack);
-        Card HQ = new Card(Suit.Hearts, Rank.Queen);
-        Card HK = new Card(Suit.Hearts, Rank.King);
-        Card HA = new Card(Suit.Hearts, Rank.Ace);
-
-        Card S2 = new Card(Suit.Spades, Rank.Deuce);
-        Card S3 = new Card(Suit.Spades, Rank.Three);
-        Card S4 = new Card(Suit.Spades, Rank.Four);
-        Card S5 = new Card(Suit.Spades, Rank.Five);
-        Card S6 = new Card(Suit.Spades, Rank.Six);
-        Card S7 = new Card(Suit.Spades, Rank.Seven);
-        Card S8 = new Card(Suit.Spades, Rank.Eight);
-        Card S9 = new Card(Suit.Spades, Rank.Nine);
-        Card S10 = new Card(Suit.Spades, Rank.Ten);
-        Card SJ = new Card(Suit.Spades, Rank.Jack);
-        Card SQ = new Card(Suit.Spades, Rank.Queen);
-        Card SK = new Card(Suit.Spades, Rank.King);
-        Card SA = new Card(Suit.Spades, Rank.Ace);
 
         PokerHand tk00 = new PokerHand(S5, D5, H5, D7, S7);
-        assertEquals(HandRank.HighCard, tk00.getHandRank());
+        assertEquals(HandRank.FullHouse, tk00.getHandRank());
 
 
         tk00 = new PokerHand(S5, D5, H5, D7, S6);
@@ -334,7 +221,7 @@ public class Tests {
 
 
         tk00 = new PokerHand(S6, D5, H5, S5, H6);
-        assertEquals(HandRank.HighCard, tk00.getHandRank());
+        assertEquals(HandRank.FullHouse, tk00.getHandRank());
 
         tk00 = new PokerHand(S7, D5, H5, S5, H6);
         tk01 = new PokerHand(D8, D5, H5, S5, S4);
@@ -349,61 +236,7 @@ public class Tests {
     }
     @Test
     public void fullHouseTests(){
-        Card C2 = new Card(Suit.Clubs, Rank.Deuce);
-        Card C3 = new Card(Suit.Clubs, Rank.Three);
-        Card C4 = new Card(Suit.Clubs, Rank.Four);
-        Card C5 = new Card(Suit.Clubs, Rank.Five);
-        Card C6 = new Card(Suit.Clubs, Rank.Six);
-        Card C7 = new Card(Suit.Clubs, Rank.Seven);
-        Card C8 = new Card(Suit.Clubs, Rank.Eight);
-        Card C9 = new Card(Suit.Clubs, Rank.Nine);
-        Card C10 = new Card(Suit.Clubs, Rank.Ten);
-        Card CJ = new Card(Suit.Clubs, Rank.Jack);
-        Card CQ = new Card(Suit.Clubs, Rank.Queen);
-        Card CK = new Card(Suit.Clubs, Rank.King);
-        Card CA = new Card(Suit.Clubs, Rank.Ace);
 
-        Card D2 = new Card(Suit.Diamonds, Rank.Deuce);
-        Card D3 = new Card(Suit.Diamonds, Rank.Three);
-        Card D4 = new Card(Suit.Diamonds, Rank.Four);
-        Card D5 = new Card(Suit.Diamonds, Rank.Five);
-        Card D6 = new Card(Suit.Diamonds, Rank.Six);
-        Card D7 = new Card(Suit.Diamonds, Rank.Seven);
-        Card D8 = new Card(Suit.Diamonds, Rank.Eight);
-        Card D9 = new Card(Suit.Diamonds, Rank.Nine);
-        Card D10 = new Card(Suit.Diamonds, Rank.Ten);
-        Card DJ = new Card(Suit.Diamonds, Rank.Jack);
-        Card DQ = new Card(Suit.Diamonds, Rank.Queen);
-        Card DK = new Card(Suit.Diamonds, Rank.King);
-        Card DA = new Card(Suit.Diamonds, Rank.Ace);
-
-        Card H2 = new Card(Suit.Hearts, Rank.Deuce);
-        Card H3 = new Card(Suit.Hearts, Rank.Three);
-        Card H4 = new Card(Suit.Hearts, Rank.Four);
-        Card H5 = new Card(Suit.Hearts, Rank.Five);
-        Card H6 = new Card(Suit.Hearts, Rank.Six);
-        Card H7 = new Card(Suit.Hearts, Rank.Seven);
-        Card H8 = new Card(Suit.Hearts, Rank.Eight);
-        Card H9 = new Card(Suit.Hearts, Rank.Nine);
-        Card H10 = new Card(Suit.Hearts, Rank.Ten);
-        Card HJ = new Card(Suit.Hearts, Rank.Jack);
-        Card HQ = new Card(Suit.Hearts, Rank.Queen);
-        Card HK = new Card(Suit.Hearts, Rank.King);
-        Card HA = new Card(Suit.Hearts, Rank.Ace);
-
-        Card S2 = new Card(Suit.Spades, Rank.Deuce);
-        Card S3 = new Card(Suit.Spades, Rank.Three);
-        Card S4 = new Card(Suit.Spades, Rank.Four);
-        Card S5 = new Card(Suit.Spades, Rank.Five);
-        Card S6 = new Card(Suit.Spades, Rank.Six);
-        Card S7 = new Card(Suit.Spades, Rank.Seven);
-        Card S8 = new Card(Suit.Spades, Rank.Eight);
-        Card S9 = new Card(Suit.Spades, Rank.Nine);
-        Card S10 = new Card(Suit.Spades, Rank.Ten);
-        Card SJ = new Card(Suit.Spades, Rank.Jack);
-        Card SQ = new Card(Suit.Spades, Rank.Queen);
-        Card SK = new Card(Suit.Spades, Rank.King);
-        Card SA = new Card(Suit.Spades, Rank.Ace);
 
         PokerHand fh00 = new PokerHand(S5, D5, H7, D7, S7);
         assertEquals(HandRank.FullHouse, fh00.getHandRank());
@@ -417,11 +250,11 @@ public class Tests {
         //FourKind
 
         PokerHand fk00 = new PokerHand(S5, C7, H7, D7, S7);
-        assertEquals(HandRank.FourOfAKind, fh00.getHandRank());
+        assertEquals(HandRank.FourOfAKind, fk00.getHandRank());
 
 
         PokerHand fk01 = new PokerHand(H5, D5, S5, C5, S7);
-        assertEquals(HandRank.FourOfAKind, fh00.getHandRank());
+        assertEquals(HandRank.FourOfAKind, fk01.getHandRank());
 
         assertEquals(-1, fk01.compareTo(fk00) );
 
@@ -433,61 +266,7 @@ public class Tests {
     }
     @Test
     public void highCardTests() {
-        Card C2 = new Card(Suit.Clubs, Rank.Deuce);
-        Card C3 = new Card(Suit.Clubs, Rank.Three);
-        Card C4 = new Card(Suit.Clubs, Rank.Four);
-        Card C5 = new Card(Suit.Clubs, Rank.Five);
-        Card C6 = new Card(Suit.Clubs, Rank.Six);
-        Card C7 = new Card(Suit.Clubs, Rank.Seven);
-        Card C8 = new Card(Suit.Clubs, Rank.Eight);
-        Card C9 = new Card(Suit.Clubs, Rank.Nine);
-        Card C10 = new Card(Suit.Clubs, Rank.Ten);
-        Card CJ = new Card(Suit.Clubs, Rank.Jack);
-        Card CQ = new Card(Suit.Clubs, Rank.Queen);
-        Card CK = new Card(Suit.Clubs, Rank.King);
-        Card CA = new Card(Suit.Clubs, Rank.Ace);
 
-        Card D2 = new Card(Suit.Diamonds, Rank.Deuce);
-        Card D3 = new Card(Suit.Diamonds, Rank.Three);
-        Card D4 = new Card(Suit.Diamonds, Rank.Four);
-        Card D5 = new Card(Suit.Diamonds, Rank.Five);
-        Card D6 = new Card(Suit.Diamonds, Rank.Six);
-        Card D7 = new Card(Suit.Diamonds, Rank.Seven);
-        Card D8 = new Card(Suit.Diamonds, Rank.Eight);
-        Card D9 = new Card(Suit.Diamonds, Rank.Nine);
-        Card D10 = new Card(Suit.Diamonds, Rank.Ten);
-        Card DJ = new Card(Suit.Diamonds, Rank.Jack);
-        Card DQ = new Card(Suit.Diamonds, Rank.Queen);
-        Card DK = new Card(Suit.Diamonds, Rank.King);
-        Card DA = new Card(Suit.Diamonds, Rank.Ace);
-
-        Card H2 = new Card(Suit.Hearts, Rank.Deuce);
-        Card H3 = new Card(Suit.Hearts, Rank.Three);
-        Card H4 = new Card(Suit.Hearts, Rank.Four);
-        Card H5 = new Card(Suit.Hearts, Rank.Five);
-        Card H6 = new Card(Suit.Hearts, Rank.Six);
-        Card H7 = new Card(Suit.Hearts, Rank.Seven);
-        Card H8 = new Card(Suit.Hearts, Rank.Eight);
-        Card H9 = new Card(Suit.Hearts, Rank.Nine);
-        Card H10 = new Card(Suit.Hearts, Rank.Ten);
-        Card HJ = new Card(Suit.Hearts, Rank.Jack);
-        Card HQ = new Card(Suit.Hearts, Rank.Queen);
-        Card HK = new Card(Suit.Hearts, Rank.King);
-        Card HA = new Card(Suit.Hearts, Rank.Ace);
-
-        Card S2 = new Card(Suit.Spades, Rank.Deuce);
-        Card S3 = new Card(Suit.Spades, Rank.Three);
-        Card S4 = new Card(Suit.Spades, Rank.Four);
-        Card S5 = new Card(Suit.Spades, Rank.Five);
-        Card S6 = new Card(Suit.Spades, Rank.Six);
-        Card S7 = new Card(Suit.Spades, Rank.Seven);
-        Card S8 = new Card(Suit.Spades, Rank.Eight);
-        Card S9 = new Card(Suit.Spades, Rank.Nine);
-        Card S10 = new Card(Suit.Spades, Rank.Ten);
-        Card SJ = new Card(Suit.Spades, Rank.Jack);
-        Card SQ = new Card(Suit.Spades, Rank.Queen);
-        Card SK = new Card(Suit.Spades, Rank.King);
-        Card SA = new Card(Suit.Spades, Rank.Ace);
 
         PokerHand hc00 = new PokerHand(H5, D6, S8, C9, SA);
         assertEquals(HandRank.HighCard, hc00.getHandRank());
@@ -500,133 +279,32 @@ public class Tests {
     }
     @Test
     public void straightTest() {
-        Card C2 = new Card(Suit.Clubs, Rank.Deuce);
-        Card C3 = new Card(Suit.Clubs, Rank.Three);
-        Card C4 = new Card(Suit.Clubs, Rank.Four);
-        Card C5 = new Card(Suit.Clubs, Rank.Five);
-        Card C6 = new Card(Suit.Clubs, Rank.Six);
-        Card C7 = new Card(Suit.Clubs, Rank.Seven);
-        Card C8 = new Card(Suit.Clubs, Rank.Eight);
-        Card C9 = new Card(Suit.Clubs, Rank.Nine);
-        Card C10 = new Card(Suit.Clubs, Rank.Ten);
-        Card CJ = new Card(Suit.Clubs, Rank.Jack);
-        Card CQ = new Card(Suit.Clubs, Rank.Queen);
-        Card CK = new Card(Suit.Clubs, Rank.King);
-        Card CA = new Card(Suit.Clubs, Rank.Ace);
 
-        Card D2 = new Card(Suit.Diamonds, Rank.Deuce);
-        Card D3 = new Card(Suit.Diamonds, Rank.Three);
-        Card D4 = new Card(Suit.Diamonds, Rank.Four);
-        Card D5 = new Card(Suit.Diamonds, Rank.Five);
-        Card D6 = new Card(Suit.Diamonds, Rank.Six);
-        Card D7 = new Card(Suit.Diamonds, Rank.Seven);
-        Card D8 = new Card(Suit.Diamonds, Rank.Eight);
-        Card D9 = new Card(Suit.Diamonds, Rank.Nine);
-        Card D10 = new Card(Suit.Diamonds, Rank.Ten);
-        Card DJ = new Card(Suit.Diamonds, Rank.Jack);
-        Card DQ = new Card(Suit.Diamonds, Rank.Queen);
-        Card DK = new Card(Suit.Diamonds, Rank.King);
-        Card DA = new Card(Suit.Diamonds, Rank.Ace);
-
-        Card H2 = new Card(Suit.Hearts, Rank.Deuce);
-        Card H3 = new Card(Suit.Hearts, Rank.Three);
-        Card H4 = new Card(Suit.Hearts, Rank.Four);
-        Card H5 = new Card(Suit.Hearts, Rank.Five);
-        Card H6 = new Card(Suit.Hearts, Rank.Six);
-        Card H7 = new Card(Suit.Hearts, Rank.Seven);
-        Card H8 = new Card(Suit.Hearts, Rank.Eight);
-        Card H9 = new Card(Suit.Hearts, Rank.Nine);
-        Card H10 = new Card(Suit.Hearts, Rank.Ten);
-        Card HJ = new Card(Suit.Hearts, Rank.Jack);
-        Card HQ = new Card(Suit.Hearts, Rank.Queen);
-        Card HK = new Card(Suit.Hearts, Rank.King);
-        Card HA = new Card(Suit.Hearts, Rank.Ace);
-
-        Card S2 = new Card(Suit.Spades, Rank.Deuce);
-        Card S3 = new Card(Suit.Spades, Rank.Three);
-        Card S4 = new Card(Suit.Spades, Rank.Four);
-        Card S5 = new Card(Suit.Spades, Rank.Five);
-        Card S6 = new Card(Suit.Spades, Rank.Six);
-        Card S7 = new Card(Suit.Spades, Rank.Seven);
-        Card S8 = new Card(Suit.Spades, Rank.Eight);
-        Card S9 = new Card(Suit.Spades, Rank.Nine);
-        Card S10 = new Card(Suit.Spades, Rank.Ten);
-        Card SJ = new Card(Suit.Spades, Rank.Jack);
-        Card SQ = new Card(Suit.Spades, Rank.Queen);
-        Card SK = new Card(Suit.Spades, Rank.King);
-        Card SA = new Card(Suit.Spades, Rank.Ace);
 
         PokerHand st00 = new PokerHand(H5, D6, S4, C3, S2);
         assertEquals(HandRank.Straight, st00.getHandRank());
+
         PokerHand st01 = new PokerHand(HA, DQ, S10, CJ, SK);
         assertEquals(HandRank.Straight, st01.getHandRank());
+        assertEquals(14, st01.getKicker().get(0).getRank().getValue());
+
         PokerHand st02 = new PokerHand(HA, D2, S3, C4, S5);
         assertEquals(HandRank.Straight, st02.getHandRank());
+        assertEquals(5, st02.getKicker().get(0).getRank().getValue());
+
         assertEquals(0,st00.compareTo(st00));
         assertEquals(0,st02.compareTo(st02));
         assertEquals(1,st01.compareTo(st02));
-        PokerHand st03 = new PokerHand(HA, D2, S3, C4, S5);
+
 
 
 
     }
     @Test
     public void flushTest() {
-        Card C2 = new Card(Suit.Clubs, Rank.Deuce);
-        Card C3 = new Card(Suit.Clubs, Rank.Three);
-        Card C4 = new Card(Suit.Clubs, Rank.Four);
-        Card C5 = new Card(Suit.Clubs, Rank.Five);
-        Card C6 = new Card(Suit.Clubs, Rank.Six);
-        Card C7 = new Card(Suit.Clubs, Rank.Seven);
-        Card C8 = new Card(Suit.Clubs, Rank.Eight);
-        Card C9 = new Card(Suit.Clubs, Rank.Nine);
-        Card C10 = new Card(Suit.Clubs, Rank.Ten);
-        Card CJ = new Card(Suit.Clubs, Rank.Jack);
-        Card CQ = new Card(Suit.Clubs, Rank.Queen);
-        Card CK = new Card(Suit.Clubs, Rank.King);
-        Card CA = new Card(Suit.Clubs, Rank.Ace);
 
-        Card D2 = new Card(Suit.Diamonds, Rank.Deuce);
-        Card D3 = new Card(Suit.Diamonds, Rank.Three);
-        Card D4 = new Card(Suit.Diamonds, Rank.Four);
-        Card D5 = new Card(Suit.Diamonds, Rank.Five);
-        Card D6 = new Card(Suit.Diamonds, Rank.Six);
-        Card D7 = new Card(Suit.Diamonds, Rank.Seven);
-        Card D8 = new Card(Suit.Diamonds, Rank.Eight);
-        Card D9 = new Card(Suit.Diamonds, Rank.Nine);
-        Card D10 = new Card(Suit.Diamonds, Rank.Ten);
-        Card DJ = new Card(Suit.Diamonds, Rank.Jack);
-        Card DQ = new Card(Suit.Diamonds, Rank.Queen);
-        Card DK = new Card(Suit.Diamonds, Rank.King);
-        Card DA = new Card(Suit.Diamonds, Rank.Ace);
 
-        Card H2 = new Card(Suit.Hearts, Rank.Deuce);
-        Card H3 = new Card(Suit.Hearts, Rank.Three);
-        Card H4 = new Card(Suit.Hearts, Rank.Four);
-        Card H5 = new Card(Suit.Hearts, Rank.Five);
-        Card H6 = new Card(Suit.Hearts, Rank.Six);
-        Card H7 = new Card(Suit.Hearts, Rank.Seven);
-        Card H8 = new Card(Suit.Hearts, Rank.Eight);
-        Card H9 = new Card(Suit.Hearts, Rank.Nine);
-        Card H10 = new Card(Suit.Hearts, Rank.Ten);
-        Card HJ = new Card(Suit.Hearts, Rank.Jack);
-        Card HQ = new Card(Suit.Hearts, Rank.Queen);
-        Card HK = new Card(Suit.Hearts, Rank.King);
-        Card HA = new Card(Suit.Hearts, Rank.Ace);
 
-        Card S2 = new Card(Suit.Spades, Rank.Deuce);
-        Card S3 = new Card(Suit.Spades, Rank.Three);
-        Card S4 = new Card(Suit.Spades, Rank.Four);
-        Card S5 = new Card(Suit.Spades, Rank.Five);
-        Card S6 = new Card(Suit.Spades, Rank.Six);
-        Card S7 = new Card(Suit.Spades, Rank.Seven);
-        Card S8 = new Card(Suit.Spades, Rank.Eight);
-        Card S9 = new Card(Suit.Spades, Rank.Nine);
-        Card S10 = new Card(Suit.Spades, Rank.Ten);
-        Card SJ = new Card(Suit.Spades, Rank.Jack);
-        Card SQ = new Card(Suit.Spades, Rank.Queen);
-        Card SK = new Card(Suit.Spades, Rank.King);
-        Card SA = new Card(Suit.Spades, Rank.Ace);
 
         PokerHand f00 = new PokerHand(HA, H8, H4, H3, H2);
         assertEquals(HandRank.Flush, f00.getHandRank());
@@ -638,5 +316,28 @@ public class Tests {
 
 
     }
+    @Test public void straightFlushTest(){
+        PokerHand sf00 = new PokerHand(HA, H5, H4, H3, H2);
+        assertEquals(HandRank.StraightFlush, sf00.getHandRank());
+
+        PokerHand sf01 = new PokerHand(H6, H5, H4, H3, H2);
+        assertEquals(HandRank.StraightFlush, sf01.getHandRank());
+
+        assertEquals(-1, sf00.compareTo(sf01));
+
+        PokerHand sf02 = new PokerHand(HK, H10, HQ, H9, HJ);
+        assertEquals(HandRank.StraightFlush, sf02.getHandRank());
+
+        PokerHand rf00 = new PokerHand(HK, H10, HQ, HA, HJ);
+        assertEquals(HandRank.RoyalFLush, rf00.getHandRank());
+
+        PokerHand rf01 = new PokerHand(CK, C10, CQ, CA, CJ);
+        assertEquals(HandRank.RoyalFLush, rf01.getHandRank());
+
+        assertEquals(0, rf01.compareTo(rf00));
+
+    }
+
+
 
 }//end Tests

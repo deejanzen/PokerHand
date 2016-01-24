@@ -272,24 +272,29 @@ public class PokerHand {
                         //kicker.add(0, hand.get(4));
                         return HandRank.RoyalFLush;
                     }
-
                 }
 
                 kicker.add(0, hand.get(4));
                 return HandRank.StraightFlush;
-            }
+            }//hasFlush
 
-            if (hand.get(3).getRank().getValue() == 5 && hand.get(4).getRank().getValue() == 14)
+            if (hand.get(3).getRank().getValue() == 5 &&
+                hand.get(4).getRank().getValue() == 14   ){
                 kicker.add(0, hand.get(3));
+            }
+            else
+                kicker.add(0, hand.get(4));
 
-            kicker.add(0, hand.get(4));
+
             return HandRank.Straight;
-        }
+        }//hasStraight
+
         //otherwise only flush
         else if (hasFlush(hand)) {
             kicker.add(0, hand.get(4));
             return HandRank.Flush;
         }
+
         //not a pair nor straight or flush
         for (Card c: hand) {
             kicker.add(c);
