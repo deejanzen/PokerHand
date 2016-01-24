@@ -177,17 +177,97 @@ public class PokerHand {
                         kicker.add(1, hand.get(1));
                         kicker.add(2, hand.get(0));
                         return HandRank.TwoPair;
+                    }
+            }
 
-                }
+            //threeKind
+            //PPP**
+            if (hand.get(0).getRank().getValue() == hand.get(1).getRank().getValue() &&
+                hand.get(1).getRank().getValue() == hand.get(2).getRank().getValue() &&
+                hand.get(2).getRank().getValue() != hand.get(3).getRank().getValue() &&
+                hand.get(3).getRank().getValue() != hand.get(4).getRank().getValue()) {
+
+                        kicker.add(0, hand.get(0));
+                        kicker.add(1, hand.get(3));
+                        kicker.add(2, hand.get(4));
+                        return HandRank.ThreeOfAKind;
+            }
+            //*PPP*
+            if (hand.get(0).getRank().getValue() != hand.get(1).getRank().getValue() &&
+                hand.get(1).getRank().getValue() == hand.get(2).getRank().getValue() &&
+                hand.get(2).getRank().getValue() == hand.get(3).getRank().getValue() &&
+                hand.get(3).getRank().getValue() != hand.get(4).getRank().getValue()) {
+
+                    kicker.add(0, hand.get(1));
+                    kicker.add(1, hand.get(4));
+                    kicker.add(2, hand.get(0));
+                    return HandRank.ThreeOfAKind;
+            }
+            //**PPP
+            if (hand.get(0).getRank().getValue() != hand.get(1).getRank().getValue() &&
+                hand.get(1).getRank().getValue() != hand.get(2).getRank().getValue() &&
+                hand.get(2).getRank().getValue() == hand.get(3).getRank().getValue() &&
+                hand.get(3).getRank().getValue() == hand.get(4).getRank().getValue()) {
+
+                    kicker.add(0, hand.get(2));
+                    kicker.add(1, hand.get(1));
+                    kicker.add(2, hand.get(0));
+                    return HandRank.ThreeOfAKind;
+
+
+            }
+            //full house
+            //PPPbb
+            if (hand.get(0).getRank().getValue() == hand.get(1).getRank().getValue() &&
+                hand.get(1).getRank().getValue() == hand.get(2).getRank().getValue() &&
+                hand.get(2).getRank().getValue() != hand.get(3).getRank().getValue() &&
+                hand.get(3).getRank().getValue() == hand.get(4).getRank().getValue()) {
+
+                    kicker.add(0, hand.get(0));
+                    return HandRank.FullHouse;
+            }
+            //bbPPP
+            if (hand.get(0).getRank().getValue() == hand.get(1).getRank().getValue() &&
+                hand.get(1).getRank().getValue() != hand.get(2).getRank().getValue() &&
+                hand.get(2).getRank().getValue() == hand.get(3).getRank().getValue() &&
+                hand.get(3).getRank().getValue() == hand.get(4).getRank().getValue()) {
+
+                    kicker.add(0, hand.get(2));
+                    return HandRank.FullHouse;
+            }
+
+            //four of a kind
+            //PPPPb
+            if (hand.get(0).getRank().getValue() == hand.get(1).getRank().getValue() &&
+                hand.get(1).getRank().getValue() == hand.get(2).getRank().getValue() &&
+                hand.get(2).getRank().getValue() == hand.get(3).getRank().getValue() &&
+                hand.get(3).getRank().getValue() != hand.get(4).getRank().getValue()) {
+
+                    kicker.add(0, hand.get(0));
+                    return HandRank.FourOfAKind;
+            }
+            //bPPPP
+            if (hand.get(0).getRank().getValue() != hand.get(1).getRank().getValue() &&
+                hand.get(1).getRank().getValue() == hand.get(2).getRank().getValue() &&
+                hand.get(2).getRank().getValue() == hand.get(3).getRank().getValue() &&
+                hand.get(3).getRank().getValue() == hand.get(4).getRank().getValue()) {
+
+                    kicker.add(0, hand.get(1));
+                    return HandRank.FourOfAKind;
             }
 
 
-        }
+        }//hasPair
 
-        //otherwise...flush, straight etc
-        else {
-            return HandRank.Flush;
+        //otherwise...straight, flush, straightFlush royalStraightFlush etc
+        else if ( hasStraight(hand) ){
+            if (hand.get(4).getRank().getValue() == 14)
+                kicker.add(0, hand.get(3));
+            else
+                kicker.add(0, hand.get(4));
+            return HandRank.Straight;
         }
+        kicker = hand;
         return HandRank.HighCard;
 
     }//end setHandRankAndKicker
@@ -201,6 +281,15 @@ public class PokerHand {
         }
         return false;
     }//end hasPair
+
+    private static boolean hasStraight(List<Card> hand){
+        if ( hand.get(3).getRank().getValue() == 5 && hand.get(4).getRank().getValue() == 14 )
+            return true;
+        if ( hand.get(0).getRank().getValue() + 4 == hand.get(4).getRank().getValue() )
+            return true;
+        return false;
+    }
+
 
 
 
