@@ -259,15 +259,27 @@ public class PokerHand {
 
         }//hasPair
 
-        //otherwise...straight, flush, straightFlush royalStraightFlush etc
+        //otherwise...straight, straightFlush royalStraightFlush etc
         else if ( hasStraight(hand) ){
+            if ( hasFlush(hand) ){
+
+            }
+
             if (hand.get(4).getRank().getValue() == 14)
                 kicker.add(0, hand.get(3));
             else
                 kicker.add(0, hand.get(4));
             return HandRank.Straight;
         }
-        kicker = hand;
+        //otherwise only flush
+        else if (hasFlush(hand)) {
+            kicker.add(0, hand.get(4));
+            return HandRank.Flush;
+        }
+        //not a pair nor straight or flush
+        for (Card c: hand) {
+            kicker.add(c);
+        }
         return HandRank.HighCard;
 
     }//end setHandRankAndKicker
@@ -287,6 +299,15 @@ public class PokerHand {
             return true;
         if ( hand.get(0).getRank().getValue() + 4 == hand.get(4).getRank().getValue() )
             return true;
+        return false;
+    }
+
+    private static boolean hasFlush(List<Card> hand){
+        if (hand.get(0).getSuit() == hand.get(1).getSuit()  &&
+            hand.get(1).getSuit() == hand.get(2).getSuit()  &&
+            hand.get(2).getSuit() == hand.get(3).getSuit()  &&
+            hand.get(3).getSuit() == hand.get(4).getSuit()     )
+                return true;
         return false;
     }
 

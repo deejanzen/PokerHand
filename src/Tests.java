@@ -492,6 +492,11 @@ public class Tests {
         PokerHand hc00 = new PokerHand(H5, D6, S8, C9, SA);
         assertEquals(HandRank.HighCard, hc00.getHandRank());
 
+        PokerHand hc01 = new PokerHand(H4, D6, S8, C9, SA);
+        assertEquals(HandRank.HighCard, hc01.getHandRank());
+        assertEquals(1, hc00.compareTo(hc01));
+        assertEquals(0, hc00.compareTo(hc00));
+
     }
     @Test
     public void straightTest() {
@@ -560,6 +565,75 @@ public class Tests {
         assertEquals(0,st00.compareTo(st00));
         assertEquals(0,st02.compareTo(st02));
         assertEquals(1,st01.compareTo(st02));
+        st03 = new PokerHand(HA, D2, S3, C4, S5);
+
+
+
+    }
+    @Test
+    public void flushTest() {
+        Card C2 = new Card(Suit.Clubs, Rank.Deuce);
+        Card C3 = new Card(Suit.Clubs, Rank.Three);
+        Card C4 = new Card(Suit.Clubs, Rank.Four);
+        Card C5 = new Card(Suit.Clubs, Rank.Five);
+        Card C6 = new Card(Suit.Clubs, Rank.Six);
+        Card C7 = new Card(Suit.Clubs, Rank.Seven);
+        Card C8 = new Card(Suit.Clubs, Rank.Eight);
+        Card C9 = new Card(Suit.Clubs, Rank.Nine);
+        Card C10 = new Card(Suit.Clubs, Rank.Ten);
+        Card CJ = new Card(Suit.Clubs, Rank.Jack);
+        Card CQ = new Card(Suit.Clubs, Rank.Queen);
+        Card CK = new Card(Suit.Clubs, Rank.King);
+        Card CA = new Card(Suit.Clubs, Rank.Ace);
+
+        Card D2 = new Card(Suit.Diamonds, Rank.Deuce);
+        Card D3 = new Card(Suit.Diamonds, Rank.Three);
+        Card D4 = new Card(Suit.Diamonds, Rank.Four);
+        Card D5 = new Card(Suit.Diamonds, Rank.Five);
+        Card D6 = new Card(Suit.Diamonds, Rank.Six);
+        Card D7 = new Card(Suit.Diamonds, Rank.Seven);
+        Card D8 = new Card(Suit.Diamonds, Rank.Eight);
+        Card D9 = new Card(Suit.Diamonds, Rank.Nine);
+        Card D10 = new Card(Suit.Diamonds, Rank.Ten);
+        Card DJ = new Card(Suit.Diamonds, Rank.Jack);
+        Card DQ = new Card(Suit.Diamonds, Rank.Queen);
+        Card DK = new Card(Suit.Diamonds, Rank.King);
+        Card DA = new Card(Suit.Diamonds, Rank.Ace);
+
+        Card H2 = new Card(Suit.Hearts, Rank.Deuce);
+        Card H3 = new Card(Suit.Hearts, Rank.Three);
+        Card H4 = new Card(Suit.Hearts, Rank.Four);
+        Card H5 = new Card(Suit.Hearts, Rank.Five);
+        Card H6 = new Card(Suit.Hearts, Rank.Six);
+        Card H7 = new Card(Suit.Hearts, Rank.Seven);
+        Card H8 = new Card(Suit.Hearts, Rank.Eight);
+        Card H9 = new Card(Suit.Hearts, Rank.Nine);
+        Card H10 = new Card(Suit.Hearts, Rank.Ten);
+        Card HJ = new Card(Suit.Hearts, Rank.Jack);
+        Card HQ = new Card(Suit.Hearts, Rank.Queen);
+        Card HK = new Card(Suit.Hearts, Rank.King);
+        Card HA = new Card(Suit.Hearts, Rank.Ace);
+
+        Card S2 = new Card(Suit.Spades, Rank.Deuce);
+        Card S3 = new Card(Suit.Spades, Rank.Three);
+        Card S4 = new Card(Suit.Spades, Rank.Four);
+        Card S5 = new Card(Suit.Spades, Rank.Five);
+        Card S6 = new Card(Suit.Spades, Rank.Six);
+        Card S7 = new Card(Suit.Spades, Rank.Seven);
+        Card S8 = new Card(Suit.Spades, Rank.Eight);
+        Card S9 = new Card(Suit.Spades, Rank.Nine);
+        Card S10 = new Card(Suit.Spades, Rank.Ten);
+        Card SJ = new Card(Suit.Spades, Rank.Jack);
+        Card SQ = new Card(Suit.Spades, Rank.Queen);
+        Card SK = new Card(Suit.Spades, Rank.King);
+        Card SA = new Card(Suit.Spades, Rank.Ace);
+
+        PokerHand f00 = new PokerHand(HA, H8, H4, H3, H2);
+        assertEquals(HandRank.Flush, f00.getHandRank());
+        PokerHand f01 = new PokerHand(HK, H8, H4, H3, H2);
+        assertEquals(1, f00.compareTo(f01));
+        assertEquals(-1, f01.compareTo(f00));
+
 
 
 
