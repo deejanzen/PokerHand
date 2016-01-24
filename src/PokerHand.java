@@ -55,7 +55,6 @@ public class PokerHand {
 
         }
         return 0;
-
     }//end compareTo
 
     private static HandRank setHandRankAndKicker(List<Card> hand, List<Card> kicker){
@@ -285,7 +284,6 @@ public class PokerHand {
             else
                 kicker.add(0, hand.get(4));
 
-
             return HandRank.Straight;
         }//hasStraight
 
@@ -296,8 +294,8 @@ public class PokerHand {
         }
 
         //not a pair nor straight or flush
-        for (Card c: hand) {
-            kicker.add(c);
+        for (int i = 4; i > -1;i--) {
+            kicker.add(hand.get(i));
         }
         return HandRank.HighCard;
 
@@ -329,9 +327,4 @@ public class PokerHand {
                 return true;
         return false;
     }
-
-
-
-
-
 }//end PokerHand

@@ -337,6 +337,16 @@ public class Tests {
         assertEquals(0, rf01.compareTo(rf00));
 
     }
+    @Test
+    public void highCardTest(){
+        PokerHand hc00 = new PokerHand(HA, S5, H6, H3, H2);
+        assertEquals(HandRank.HighCard, hc00.getHandRank());
+        PokerHand hc01 = new PokerHand(HK, S5, H6, H3, H2);
+        assertEquals(1, hc00.compareTo(hc01));
+        PokerHand hc02 = new PokerHand(HA, S5, H6, H3, H2);
+        PokerHand hc03 = new PokerHand(HA, S5, H6, H3, S3);
+        assertEquals(-1, hc02.compareTo(hc03));
+    }
 
 
 
