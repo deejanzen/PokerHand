@@ -254,8 +254,6 @@ public class PokerHand {
                     kicker.add(0, hand.get(1));
                     return HandRank.FourOfAKind;
             }
-
-
         }//hasPair
 
         //otherwise...straight, straightFlush royalStraightFlush etc
