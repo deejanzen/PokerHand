@@ -2,9 +2,14 @@
  * Created by djanzen on 1/21/16.
  */
 import org.junit.*;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import static org.junit.Assert.*;
 
-public class Tests {
+public class PokerHandTests {
     public Card C2 = new Card(Suit.Clubs, Rank.Deuce);
     public Card C3 = new Card(Suit.Clubs, Rank.Three);
     public Card C4 = new Card(Suit.Clubs, Rank.Four);
@@ -347,7 +352,61 @@ public class Tests {
         PokerHand hc03 = new PokerHand(HA, S5, H6, H3, S3);
         assertEquals(-1, hc02.compareTo(hc03));
     }
-    //@
+    @Test
+    public void generalTests(){
+        PokerHand highCard = new PokerHand(HA, S5, H6, H3, H2);
+        PokerHand pairAces = new PokerHand(HA, SA, H6, H3, H2);
+        PokerHand pairAcesKkicker = new PokerHand(HA, SA, H6, H3, HK);
+        PokerHand TwopairAces = new PokerHand(HA, SA, S3, H3, H2);
+        PokerHand threeKind = new PokerHand(S5, D5, H5, D6, S7);
+        PokerHand straight = new PokerHand(S5, D6, H9, D7, S8);
+        PokerHand flush = new PokerHand(S5, S6, S4, S2, S7);
+        PokerHand fullHouse = new PokerHand(S5, D5, H5, D7, S7);
+        PokerHand fourKind = new PokerHand(S5, D5, H5, C5, S7);
+        PokerHand straightFlush = new PokerHand(SK, S9, S10, SJ, SQ);
+        PokerHand royalFlush = new PokerHand(SK, S10, SA, SJ, SQ);
+
+        assertEquals(1, royalFlush.compareTo(highCard));
+        assertEquals(1, straightFlush.compareTo(pairAces));
+        assertEquals(1, fourKind.compareTo(TwopairAces));
+        assertEquals(1, fullHouse.compareTo(threeKind));
+        assertEquals(1, flush.compareTo(straight));
+
+        assertEquals(-1, highCard.compareTo(pairAces));
+        assertEquals(-1, pairAces.compareTo(TwopairAces));
+        assertEquals(-1, TwopairAces.compareTo(threeKind));
+        assertEquals(-1, threeKind.compareTo(straight));
+        assertEquals(-1, straight.compareTo(flush));
+        assertEquals(-1, flush.compareTo(fullHouse));
+        assertEquals(-1, fullHouse.compareTo(fourKind));
+        assertEquals(-1, fourKind.compareTo(straightFlush));
+        assertEquals(-1, straightFlush.compareTo(royalFlush));
+
+        assertEquals(-1, pairAces.compareTo(pairAcesKkicker));
+
+        List<PokerHand> list = new ArrayList<PokerHand>();
+        list.add(fullHouse);
+        list.add(pairAces);
+        list.add(highCard);
+        list.add(straightFlush);
+        list.add(straight);
+        list.add(royalFlush);
+        list.add(TwopairAces);
+        list.add(fourKind);
+        list.add(threeKind);
+        list.add(flush);
+        for (PokerHand p: list)
+            System.out.print(p.getHandRank() + " ");
+        Collections.sort(list);
+        System.out.println();
+        for (PokerHand p: list)
+            System.out.print(p.getHandRank() + " ");
+
+
+
+
+    }
+
 
 
 

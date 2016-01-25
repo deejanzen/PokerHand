@@ -6,7 +6,7 @@ import java.util.Stack;
 /**
  * Created by djanzen on 1/21/16.
  */
-public class PokerHand {
+public class PokerHand implements Comparable<PokerHand>{
     private List<Card> hand;
     private HandRank handRank;
     private List<Card> kicker;
