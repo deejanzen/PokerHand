@@ -13,6 +13,7 @@ public class Player {
     public Player(){
         money = 100.00;
         playerCards = new ArrayList<>();
+        bestHand = null;
     }
 
     public double getAnte(){
@@ -37,6 +38,12 @@ public class Player {
 
     public void sortPlayerCards(){
         Collections.sort(playerCards);
+    }
+    public void setBestHand(PokerHand newHand){
+        bestHand = newHand;
+    }
+    public PokerHand getBestHand(){
+        return bestHand;
     }
 
 }

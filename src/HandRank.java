@@ -10,4 +10,21 @@ public enum HandRank {
     public int getValue(){
         return number;
     }
+    public String toString(){
+        String result = new String("");
+        switch(getValue()){
+            case 0: result = "High Card"; break;
+            case 1: result = "Pair"; break;
+            case 2: result = "Two Pair"; break;
+            case 3: result = "Three of a kind"; break;
+            case 4: result = "Straight"; break;
+            case 5: result = "Flush"; break;
+            case 6: result = "Full House"; break;
+            case 7: result = "Four of a kind"; break;
+            case 8: result = "Straight Flush"; break;
+            case 9: result = "Royal Straight"; break;
+
+        }
+        return result;
+    }
 }

@@ -36,9 +36,13 @@ public class Game {
                 }
                 playersList.get(i).sortPlayerCards();
             }
-
-            //get and display common cards
+            //display common cards
             common = dealer.getCommonHand();
+            //determine players best
+            for (int i = 0; i < numberPlayers;i++){
+                playersList.get(i).setBestHand(dealer.determineBestHand(playersList.get(i).getPlayerCards(), common ));
+            }
+            //display common cards
             System.out.print("Community Cards: ");
             for( Card c: common){
                 System.out.print(c.toString() + " ");
@@ -46,13 +50,16 @@ public class Game {
             System.out.println("\n++++++++++++++++++++++++++++++++++++");
             //show players
             for (int i = 0; i < numberPlayers;i++) {
-                System.out.print("Player " + (i+1) + ": " + playersList.get(i).getMoney() + " " );
+                System.out.print("Player " + (i+1) + ": $" + playersList.get(i).getMoney() + " - " );
                 for (Card c: playersList.get(i).getPlayerCards()){
                     System.out.print(c.toString() + " ");
                 }
-
+                System.out.println("\n");
+                System.out.print("\tBest Hand: " + playersList.get(i).getBestHand().toString() + " - " + playersList.get(i).getBestHand().getHandRank().toString());
                 System.out.println("\n");
             }
+
+
 
             System.out.print("Play another round? y or n? ");
             String anotherGame = input.next();

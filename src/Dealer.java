@@ -15,7 +15,6 @@ public class Dealer {
         marker = 0;
         deck = new ArrayList<>();
 
-
         deck.add( new Card(Rank.Deuce, Suit.Clubs) );
         deck.add( new Card(Rank.Three, Suit.Clubs) );
         deck.add( new Card(Rank.Four, Suit.Clubs) );
@@ -86,7 +85,7 @@ public class Dealer {
     }
     public Card deal(){
         return deck.get(marker++);
-    }
+    }//new Random 0 to 52 instead of shuffle??
 
     public List<Card> getCommonHand(){
         List<Card> commonHand = new ArrayList<>();
@@ -95,6 +94,59 @@ public class Dealer {
         }
         Collections.sort(commonHand);
         return commonHand;
+    }
+
+    public PokerHand determineBestHand(List<Card> player, List<Card> common ){
+        List<PokerHand> hands = new ArrayList<>();
+        //Create all 21 PokerHands & add them to a List<PokerHand>
+
+        //0 5 = player.get(0) 6 = player.get(1)
+        hands.add( new PokerHand(common.get(0),common.get(1),common.get(2),common.get(3),common.get(4)) );
+        //1
+        hands.add( new PokerHand(player.get(0),common.get(1),common.get(2),common.get(3),common.get(4)) );
+        //2
+        hands.add( new PokerHand(common.get(0),player.get(0),common.get(2),common.get(3),common.get(4)) );
+        //3
+        hands.add( new PokerHand(common.get(0),common.get(1),player.get(0),common.get(3),common.get(4)) );
+        //4
+        hands.add( new PokerHand(common.get(0),common.get(1),common.get(2),player.get(0),common.get(4)) );
+        //5
+        hands.add( new PokerHand(common.get(0),common.get(1),common.get(2),common.get(3),player.get(0)) );
+        //6
+        hands.add( new PokerHand(player.get(1),common.get(1),common.get(2),common.get(3),common.get(4)) );
+        //7
+        hands.add( new PokerHand(common.get(0),player.get(1),common.get(2),common.get(3),common.get(4)) );
+        //8
+        hands.add( new PokerHand(common.get(0),common.get(1),player.get(1),common.get(3),common.get(4)) );
+        //9
+        hands.add( new PokerHand(common.get(0),common.get(1),common.get(2),player.get(1),common.get(4)) );
+        //10
+        hands.add( new PokerHand(common.get(0),common.get(1),common.get(2),common.get(3),player.get(1)) );
+        //11
+        hands.add( new PokerHand(player.get(0),player.get(1),common.get(2),common.get(3),common.get(4)) );
+        //12
+        hands.add( new PokerHand(common.get(0),player.get(0),player.get(1),common.get(3),common.get(4)) );
+        //13
+        hands.add( new PokerHand(common.get(0),common.get(1),player.get(0),player.get(1),common.get(4)) );
+        //14
+        hands.add( new PokerHand(common.get(0),common.get(1),common.get(2),player.get(0),player.get(1)) );
+        //15
+        hands.add( new PokerHand(player.get(0),common.get(1),player.get(1),common.get(3),common.get(4)) );
+        //16
+        hands.add( new PokerHand(player.get(0),common.get(1),common.get(2),player.get(1),common.get(4)) );
+        //17
+        hands.add( new PokerHand(player.get(0),common.get(1),common.get(2),common.get(3),player.get(1)) );
+        //18
+        hands.add( new PokerHand(common.get(0),player.get(0),common.get(2),player.get(1),common.get(4)) );
+        //19
+        hands.add( new PokerHand(common.get(0),player.get(0),common.get(2),common.get(3),player.get(1)) );
+        //20
+        hands.add( new PokerHand(common.get(0),common.get(1),player.get(0),common.get(3),player.get(1)) );
+
+        //sort list
+        Collections.sort(hands);
+        //return get last
+        return hands.get(20);
     }
 
 }

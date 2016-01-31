@@ -56,6 +56,13 @@ public class PokerHand implements Comparable<PokerHand>{
         }
         return 0;
     }//end compareTo
+    public String toString(){
+        String result = new String("");
+        for (Card c: hand){
+            result += c.toString() + " ";
+        }
+        return result;
+    }//end toString
 
     private static HandRank setHandRankAndKicker(List<Card> hand, List<Card> kicker){
         //if you have a pair then check the pair based hands
