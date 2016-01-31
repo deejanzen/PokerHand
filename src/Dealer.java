@@ -14,75 +14,87 @@ public class Dealer {
         pot = 0;
         marker = 0;
         deck = new ArrayList<>();
-        deck.add( new Card(Suit.Clubs, Rank.Deuce) );
-        deck.add( new Card(Suit.Clubs, Rank.Three) );
-        deck.add( new Card(Suit.Clubs, Rank.Four) );
-        deck.add( new Card(Suit.Clubs, Rank.Five) );
-        deck.add( new Card(Suit.Clubs, Rank.Six) );
-        deck.add( new Card(Suit.Clubs, Rank.Seven) );
-        deck.add( new Card(Suit.Clubs, Rank.Eight) );
-        deck.add( new Card(Suit.Clubs, Rank.Nine) );
-        deck.add( new Card(Suit.Clubs, Rank.Ten) );
-        deck.add( new Card(Suit.Clubs, Rank.Jack) );
-        deck.add( new Card(Suit.Clubs, Rank.Queen) );
-        deck.add( new Card(Suit.Clubs, Rank.King) );
-        deck.add( new Card(Suit.Clubs, Rank.Ace) );
 
-        deck.add( new Card(Suit.Diamonds, Rank.Deuce) );
-        deck.add( new Card(Suit.Diamonds, Rank.Three) );
-        deck.add( new Card(Suit.Diamonds, Rank.Four) );
-        deck.add( new Card(Suit.Diamonds, Rank.Five) );
-        deck.add( new Card(Suit.Diamonds, Rank.Six) );
-        deck.add( new Card(Suit.Diamonds, Rank.Seven) );
-        deck.add( new Card(Suit.Diamonds, Rank.Eight) );
-        deck.add( new Card(Suit.Diamonds, Rank.Nine) );
-        deck.add( new Card(Suit.Diamonds, Rank.Ten) );
-        deck.add( new Card(Suit.Diamonds, Rank.Jack) );
-        deck.add( new Card(Suit.Diamonds, Rank.Queen) );
-        deck.add( new Card(Suit.Diamonds, Rank.King) );
-        deck.add( new Card(Suit.Diamonds, Rank.Ace) );
 
-        deck.add( new Card(Suit.Hearts, Rank.Deuce) );
-        deck.add( new Card(Suit.Hearts, Rank.Three) );
-        deck.add( new Card(Suit.Hearts, Rank.Four) );
-        deck.add( new Card(Suit.Hearts, Rank.Five) );
-        deck.add( new Card(Suit.Hearts, Rank.Six) );
-        deck.add( new Card(Suit.Hearts, Rank.Seven) );
-        deck.add( new Card(Suit.Hearts, Rank.Eight) );
-        deck.add( new Card(Suit.Hearts, Rank.Nine) );
-        deck.add( new Card(Suit.Hearts, Rank.Ten) );
-        deck.add( new Card(Suit.Hearts, Rank.Jack) );
-        deck.add( new Card(Suit.Hearts, Rank.Queen) );
-        deck.add( new Card(Suit.Hearts, Rank.King) );
-        deck.add( new Card(Suit.Hearts, Rank.Ace) );
+        deck.add( new Card(Rank.Deuce, Suit.Clubs) );
+        deck.add( new Card(Rank.Three, Suit.Clubs) );
+        deck.add( new Card(Rank.Four, Suit.Clubs) );
+        deck.add( new Card(Rank.Five, Suit.Clubs) );
+        deck.add( new Card(Rank.Six, Suit.Clubs) );
+        deck.add( new Card(Rank.Seven, Suit.Clubs) );
+        deck.add( new Card(Rank.Eight, Suit.Clubs) );
+        deck.add( new Card(Rank.Nine, Suit.Clubs) );
+        deck.add( new Card(Rank.Ten, Suit.Clubs) );
+        deck.add( new Card(Rank.Jack, Suit.Clubs) );
+        deck.add( new Card(Rank.Queen,Suit.Clubs) );
+        deck.add( new Card(Rank.King, Suit.Clubs) );
+        deck.add( new Card(Rank.Ace, Suit.Clubs) );
 
-        deck.add( new Card(Suit.Spades, Rank.Deuce) );
-        deck.add( new Card(Suit.Spades, Rank.Three) );
-        deck.add( new Card(Suit.Spades, Rank.Four) );
-        deck.add( new Card(Suit.Spades, Rank.Five) );
-        deck.add( new Card(Suit.Spades, Rank.Six) );
-        deck.add( new Card(Suit.Spades, Rank.Seven) );
-        deck.add( new Card(Suit.Spades, Rank.Eight) );
-        deck.add( new Card(Suit.Spades, Rank.Nine) );
-        deck.add( new Card(Suit.Spades, Rank.Ten) );
-        deck.add( new Card(Suit.Spades, Rank.Jack) );
-        deck.add( new Card(Suit.Spades, Rank.Queen) );
-        deck.add( new Card(Suit.Spades, Rank.King) );
-        deck.add( new Card(Suit.Spades, Rank.Ace) );
+        deck.add( new Card(Rank.Deuce, Suit.Diamonds) );
+        deck.add( new Card(Rank.Three, Suit.Diamonds) );
+        deck.add( new Card(Rank.Four, Suit.Diamonds) );
+        deck.add( new Card(Rank.Five, Suit.Diamonds) );
+        deck.add( new Card(Rank.Six, Suit.Diamonds) );
+        deck.add( new Card(Rank.Seven, Suit.Diamonds) );
+        deck.add( new Card(Rank.Eight, Suit.Diamonds) );
+        deck.add( new Card(Rank.Nine, Suit.Diamonds) );
+        deck.add( new Card(Rank.Ten, Suit.Diamonds) );
+        deck.add( new Card(Rank.Jack, Suit.Diamonds) );
+        deck.add( new Card(Rank.Queen,Suit.Diamonds) );
+        deck.add( new Card(Rank.King, Suit.Diamonds) );
+        deck.add( new Card(Rank.Ace, Suit.Diamonds) );
+
+        deck.add( new Card(Rank.Deuce, Suit.Hearts) );
+        deck.add( new Card(Rank.Three, Suit.Hearts) );
+        deck.add( new Card(Rank.Four, Suit.Hearts) );
+        deck.add( new Card(Rank.Five, Suit.Hearts) );
+        deck.add( new Card(Rank.Six, Suit.Hearts) );
+        deck.add( new Card(Rank.Seven, Suit.Hearts) );
+        deck.add( new Card(Rank.Eight, Suit.Hearts) );
+        deck.add( new Card(Rank.Nine, Suit.Hearts) );
+        deck.add( new Card(Rank.Ten, Suit.Hearts) );
+        deck.add( new Card(Rank.Jack, Suit.Hearts) );
+        deck.add( new Card(Rank.Queen,Suit.Hearts) );
+        deck.add( new Card(Rank.King, Suit.Hearts) );
+        deck.add( new Card(Rank.Ace, Suit.Hearts) );
+
+        deck.add( new Card(Rank.Deuce, Suit.Spades) );
+        deck.add( new Card(Rank.Three, Suit.Spades) );
+        deck.add( new Card(Rank.Four, Suit.Spades) );
+        deck.add( new Card(Rank.Five, Suit.Spades) );
+        deck.add( new Card(Rank.Six, Suit.Spades) );
+        deck.add( new Card(Rank.Seven, Suit.Spades) );
+        deck.add( new Card(Rank.Eight, Suit.Spades) );
+        deck.add( new Card(Rank.Nine, Suit.Spades) );
+        deck.add( new Card(Rank.Ten, Suit.Spades) );
+        deck.add( new Card(Rank.Jack, Suit.Spades) );
+        deck.add( new Card(Rank.Queen,Suit.Spades) );
+        deck.add( new Card(Rank.King, Suit.Spades) );
+        deck.add( new Card(Rank.Ace, Suit.Spades) );
+
+
         Collections.shuffle(deck);
     }
 
     public void getPot(double ante){
         pot += ante;
     }
+
     public void shuffle(){
         marker = 0;
         Collections.shuffle(deck);
     }
     public Card deal(){
-        Card result = deck.get(marker);
-        marker += 1;
-        return result;
+        return deck.get(marker++);
+    }
+
+    public List<Card> getCommonHand(){
+        List<Card> commonHand = new ArrayList<>();
+        for (int i = 0; i < 5;i++){
+            commonHand.add(deal());
+        }
+        Collections.sort(commonHand);
+        return commonHand;
     }
 
 }

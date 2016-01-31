@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -7,45 +8,60 @@ import java.util.Scanner;
  */
 public class Game {
     public static void main(String [] args){
-        ArrayList<Card> common = new ArrayList<>();
+        List<Card> common;
 
         Scanner input = new Scanner(System.in);
         System.out.print("How many players? ");
         int numberPlayers = input.nextInt();
 
 
-        Dealer deals = new Dealer();
-        ArrayList<Player> players = new ArrayList<>();
+        Dealer dealer = new Dealer();
+        ArrayList<Player> playersList = new ArrayList<>();
         for (int i = 0; i < numberPlayers; i++) {
-            players.add(new Player());
+            playersList.add(new Player());
 
         }
         //game
         while(true) {
-
-
-
+            //get ante
             for (int i = 0; i < numberPlayers;i++) {
-                deals.getPot(players.get(i).getAnte());
+                dealer.getPot(playersList.get(i).getAnte());
             }
             System.out.println("\n");
-            for (int i = 0; i< 5;i++){
-                common.add(deals.deal());
+
+            //deal two cards to each player
+            for (int i = 0; i < numberPlayers;i++) {
+                for (int j = 0; j<2; j++){
+                    playersList.get(i).addToPlayerCards(dealer.deal());
+                }
+                playersList.get(i).sortPlayerCards();
             }
-            Collections.sort(common);
+
+            //get and display common cards
+            common = dealer.getCommonHand();
             System.out.print("Community Cards: ");
             for( Card c: common){
                 System.out.print(c.toString() + " ");
             }
-            System.out.println();
+            System.out.println("\n++++++++++++++++++++++++++++++++++++");
+            //show players
+            for (int i = 0; i < numberPlayers;i++) {
+                System.out.print("Player " + (i+1) + ": " + playersList.get(i).getMoney() + " " );
+                for (Card c: playersList.get(i).getPlayerCards()){
+                    System.out.print(c.toString() + " ");
+                }
 
-
+                System.out.println("\n");
+            }
 
             System.out.print("Play another round? y or n? ");
             String anotherGame = input.next();
             if ( anotherGame.equals("n") ) break;
-            deals.shuffle();
+            dealer.shuffle();
             common.clear();
+            for (int i = 0; i < numberPlayers;i++){
+                playersList.get(i).clearPlayerCards();
+            }
         }
 
 
