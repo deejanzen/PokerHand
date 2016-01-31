@@ -8,10 +8,11 @@ import java.util.List;
 public class Dealer {
     private List<Card> deck;
     private double pot;
+    private int marker;
 
     public Dealer(){
         pot = 0;
-
+        marker = 0;
         deck = new ArrayList<>();
         deck.add( new Card(Suit.Clubs, Rank.Deuce) );
         deck.add( new Card(Suit.Clubs, Rank.Three) );
@@ -68,16 +69,20 @@ public class Dealer {
         deck.add( new Card(Suit.Spades, Rank.Queen) );
         deck.add( new Card(Suit.Spades, Rank.King) );
         deck.add( new Card(Suit.Spades, Rank.Ace) );
+        Collections.shuffle(deck);
     }
 
     public void getPot(double ante){
         pot += ante;
     }
     public void shuffle(){
+        marker = 0;
         Collections.shuffle(deck);
     }
     public Card deal(){
-        return deck.remove(0);
+        Card result = deck.get(marker);
+        marker += 1;
+        return result;
     }
 
 }

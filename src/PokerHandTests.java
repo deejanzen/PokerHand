@@ -68,7 +68,7 @@ public class PokerHandTests {
 
     @Test
     public void getValue(){
-
+        System.out.print(S2.toString());
         assertEquals(Rank.Deuce.getValue(), 2);
         assertEquals(Rank.Three.getValue(), 3);
         assertEquals(Rank.Four.getValue(), 4);
