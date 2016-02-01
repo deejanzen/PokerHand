@@ -9,6 +9,7 @@ import java.util.Scanner;
 public class Game {
     public static void main(String [] args){
         List<Card> common;
+        List<Integer> topIndices;
 
         Scanner input = new Scanner(System.in);
         System.out.print("How many players? ");
@@ -21,6 +22,7 @@ public class Game {
             playersList.add(new Player());
 
         }
+
         //game
         while(true) {
             //get ante
@@ -36,7 +38,7 @@ public class Game {
                 }
                 playersList.get(i).sortPlayerCards();
             }
-            //display common cards
+            //get common cards
             common = dealer.getCommonHand();
             //determine players best
             for (int i = 0; i < numberPlayers;i++){
@@ -58,14 +60,29 @@ public class Game {
                 System.out.print("\tBest Hand: " + playersList.get(i).getBestHand().toString() + " - " + playersList.get(i).getBestHand().getHandRank().toString());
                 System.out.println("\n");
             }
+            //show winners
+            topIndices = dealer.getTopIndices(playersList);
+            if (topIndices.size() == 1){
+                playersList.get(topIndices.get(0)).setMoney(dealer.payout(topIndices.size()));
+                System.out.print("Winner: Player " + (topIndices.get(0) +1) + " $" +playersList.get(topIndices.get(0)).getMoney() + "\n");
+                System.out.println("++++++++++++++++++++++++++++++++++++");
+                System.out.print("\t" + playersList.get(topIndices.get(0)).getBestHand().getHandRank().toString());
+                System.out.print( " " + playersList.get(topIndices.get(0)).getBestHand().toString() +"\n" );
+            }
+            else {
+
+                System.out.println("Potential Ties");
+            }
 
 
 
-            System.out.print("Play another round? y or n? ");
+
+            System.out.print("\nPlay another round? y or n? ");
             String anotherGame = input.next();
             if ( anotherGame.equals("n") ) break;
             dealer.shuffle();
             common.clear();
+            dealer.clearPot();
             for (int i = 0; i < numberPlayers;i++){
                 playersList.get(i).clearPlayerCards();
             }

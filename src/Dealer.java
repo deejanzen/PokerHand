@@ -79,6 +79,14 @@ public class Dealer {
         pot += ante;
     }
 
+    public double payout(Integer winners){
+        return pot / winners;
+    }
+
+    public void clearPot(){
+        pot = 0;
+    }
+
     public void shuffle(){
         marker = 0;
         Collections.shuffle(deck);
@@ -149,4 +157,19 @@ public class Dealer {
         return hands.get(20);
     }
 
+    public List<Integer> getTopIndices(ArrayList<Player> playersList) {
+        List<Integer> topIndices =  new ArrayList<>();
+        int maxHandRankValue = -1;
+        for (int i = 0; i < playersList.size();i++){
+            if (playersList.get(i).getBestHand().getHandRank().getValue() > maxHandRankValue)
+                maxHandRankValue = playersList.get(i).getBestHand().getHandRank().getValue();
+        }
+        for (int i = 0; i < playersList.size();i++){
+            if (playersList.get(i).getBestHand().getHandRank().getValue() == maxHandRankValue)
+                topIndices.add(i);
+        }
+
+
+        return topIndices;
+    }
 }

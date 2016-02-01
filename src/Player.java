@@ -2,9 +2,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * Created by djanzen on 1/30/16.
- */
+
 public class Player {
     private List<Card> playerCards;
     private double money;
@@ -17,7 +15,8 @@ public class Player {
     }
 
     public double getAnte(){
-        return money-=2.00;
+        money -=2.00;
+        return 2.00;
     }
 
     public void addToPlayerCards(Card c){
@@ -30,6 +29,10 @@ public class Player {
 
     public double getMoney(){
         return money;
+    }
+
+    public void setMoney(double winnings){
+        money += winnings;
     }
 
     public void clearPlayerCards(){

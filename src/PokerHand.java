@@ -295,6 +295,10 @@ public class PokerHand implements Comparable<PokerHand>{
         //otherwise only flush
         else if (hasFlush(hand)) {
             kicker.add(0, hand.get(4));
+            kicker.add(1, hand.get(3));
+            kicker.add(2, hand.get(2));
+            kicker.add(3, hand.get(1));
+            kicker.add(4, hand.get(0));
             return HandRank.Flush;
         }
 
